@@ -36,7 +36,7 @@ public class Mailer {
         Email email = new Email();
 
         if(appointment.getSender() == null || appointment.getSender().length() == 0) {
-            appointment.setSender("noreply@mydaygpt.com");
+            appointment.setSender("myday");
         }
 
         email.setFrom(appointment.getSender(), "noreply@mydaygpt.com");
@@ -44,7 +44,7 @@ public class Mailer {
         
         email.setSubject("New appointment via myday");
 
-        email.setPlain("Hello from mydayGPT, there's a new appointment for you:\r\n\r\nLocation: " + appointment.getLocation() + "\r\n\r\nStart time: " + appointment.getStartTime() + "\r\n\r\nEnd time: " + appointment.getEndTime());
+        email.setPlain("Hello from mydayGPT, there's a new appointment for you, see invite attached.\r\n\r\nLocation: " + appointment.getLocation() + "\r\n\r\nStart time: " + appointment.getStartTime() + "\r\n\r\nEnd time: " + appointment.getEndTime());
 
         File icsFile;
         try {

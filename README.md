@@ -21,3 +21,11 @@ Needs .env file with API key
 ## Deploy
 
     mvn azure-functions:deploy
+
+## Missing features/known issues
+
+- [x] Mail with correct domain
+- [ ] Proper handling of .env
+- [ ] Add sender information
+- [ ] Allow multiple recipients
+- [ ] Multi-language support
