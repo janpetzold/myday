@@ -1,0 +1,74 @@
+openapi: 3.0.0
+info:
+  title: Appointment Creation API
+  version: 1.0.0
+  description: An API to create appointments with API key protection.
+
+servers:
+  - url: 'https://myday.azurewebsites.net/api'
+    description: Base server
+
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-Api-Key
+  schemas:
+    AppointmentRequest:
+      type: object
+      properties:
+        startTime:
+          type: string
+          format: date-time
+          description: The start time of the appointment as ISO8601 String including milliseconds in UTC time zone.
+        endTime:
+          type: string
+          format: date-time
+          description: The end time of the appointment as ISO8601 String including milliseconds in UTC time zone.
+        location:
+          type: string
+          description: The location of the appointment as free text, may include city name, street, zip code, etc.
+        sender:
+          type: string
+          description: The current OpenAI user who created the chat and sends the appointment
+        mail:
+          type: string
+          format: email
+          description: The email address of the recipient.
+      required:
+        - startTime
+        - endTime
+        - location
+        - mail
+
+paths:
+  /appointments:
+    post:
+      summary: Create an appointment
+      operationId: createAppointment
+      description: Creates a new appointment with the specified details.
+      security:
+        - ApiKeyAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AppointmentRequest'
+      responses:
+        '200':
+          description: Appointment created successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+        '400':
+          description: Invalid input provided.
+        '401':
+          description: Unauthorized, invalid or missing API key.
+        '500':
+          description: Internal server error.
