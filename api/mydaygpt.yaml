@@ -18,10 +18,10 @@ components:
     AppointmentRequest:
       type: object
       properties:
-        language:
-          type: string
-          format: date-time
-          description: The input language of the conversation so we can apply localization for the outgoing e-mail
+        #language:
+        #  type: string
+        #  format: date-time
+        #  description: The input language of the conversation so we can apply localization for the outgoing e-mail
         startTime:
           type: string
           format: date-time
