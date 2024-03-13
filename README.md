@@ -34,5 +34,5 @@ Needs .env file with API key
 - [ ] Display time in user-friendly format depending on the locale in mail body
 - [ ] Add title or sender
 - [ ] Allow multiple recipients
-- [ ] Multi-language support
+- [ ] Multi-language support (correct language should be auto-determined)
 - [ ] Write proper README
