@@ -31,6 +31,7 @@ Needs .env file with API key
 - [ ] Add sender information
 - [ ] Split e-mail creation and actual sending for better testing
 - [ ] Improve mail attachment file name
+- [ ] Display time in user-friendly format depending on the locale in mail body
 - [ ] Add title or sender
 - [ ] Allow multiple recipients
 - [ ] Multi-language support

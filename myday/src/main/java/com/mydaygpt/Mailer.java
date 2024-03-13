@@ -36,14 +36,17 @@ public class Mailer {
     public String sendEmail(Appointment appointment, Calendar calendarItem, String language) throws MailerSendException, FileSystemException {
         Email email = new Email();
 
-        if(appointment.getSender() == null || appointment.getSender().length() == 0) {
-            appointment.setSender("myday");
+        if(appointment.getTitle() == null || appointment.getTitle().length() == 0) {
             email.setSubject("Myday: New invite");
         } else {
-            email.setSubject("Myday: New invite from " + appointment.getSender());
+            email.setSubject("Myday: New invite \"" + appointment.getTitle() + "\"");
         }
 
+        if(appointment.getSender() == null || appointment.getSender().length() == 0) {
+            appointment.setSender("myday");
+        }
         email.setFrom(appointment.getSender(), "noreply@mydaygpt.com");
+
         email.addRecipient(appointment.getMail(), appointment.getMail());
         email.setPlain("Hello from mydayGPT, there's a new appointment for you, see invite attached.\r\n\r\nLocation: " + appointment.getLocation() + "\r\n\r\nStart time: " + appointment.getStartTime() + "\r\n\r\nEnd time: " + appointment.getEndTime());
 
