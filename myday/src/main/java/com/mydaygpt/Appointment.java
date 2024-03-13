@@ -3,6 +3,7 @@ package com.mydaygpt;
 public class Appointment {
     public String startTime;
     public String endTime;
+    public String title;
     public String location;
     public String sender;
     public String mail;
@@ -10,9 +11,10 @@ public class Appointment {
     public Appointment() {
     }
     
-    public Appointment(String startTime, String endTime, String location, String sender, String mail) {
+    public Appointment(String startTime, String endTime, String title, String location, String sender, String mail) {
         this.startTime = startTime;
         this.endTime = endTime;
+        this.title = title;
         this.location = location;
         this.sender = sender;
         this.mail = mail;
@@ -28,6 +30,12 @@ public class Appointment {
     }
     public void setEndTime(String endTime) {
         this.endTime = endTime;
+    }
+    public String getTitle() {
+        return title;
+    }
+    public void setTitle(String title) {
+        this.title = title;
     }
     public String getLocation() {
         return location;

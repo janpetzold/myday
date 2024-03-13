@@ -56,12 +56,17 @@ public class Function {
             ObjectMapper mapper = new ObjectMapper();
             Appointment appointment = mapper.readValue(jsonBody, Appointment.class);
 
+            // TODO: add actual language detection
+            String language = "en";
+
             // Log the input values
             context.getLogger().info("Received appointment details: ");
+            context.getLogger().info("Language: " + appointment.startTime);
             context.getLogger().info("Start Time: " + appointment.startTime);
             context.getLogger().info("End Time: " + appointment.endTime);
+            context.getLogger().info("Title: " + appointment.title);
             context.getLogger().info("Location: " + appointment.location);
-            context.getLogger().info("Sender: " + appointment.sender);
+            // context.getLogger().info("Sender: " + appointment.sender);
             // context.getLogger().info("Mail: " + appointment.mail);
 
             context.getLogger().info("Creating event");
@@ -70,18 +75,25 @@ public class Function {
 
             context.getLogger().info("Sending mail with attachment");
             Mailer mailer = new Mailer();
-            mailer.sendEmail(appointment, calendarItem);
+            mailer.sendEmail(appointment, calendarItem, language);
             
             return request.createResponseBuilder(HttpStatus.OK).body("Appointment created successfully.").build();
 
         } catch (ParseException e) {
-            return request.createResponseBuilder(HttpStatus.BAD_REQUEST).body("Error parsing start and/or end time").build();
+            String err = "Error parsing start and/or end time";
+            context.getLogger().warning(err);
+            return request.createResponseBuilder(HttpStatus.BAD_REQUEST).body(err).build();
         } catch (MailerSendException e) {
-            return request.createResponseBuilder(HttpStatus.SERVICE_UNAVAILABLE).body("Mail could not be sent").build();
+            String err = "Mail could not be sent";
+            context.getLogger().warning(err);
+            return request.createResponseBuilder(HttpStatus.SERVICE_UNAVAILABLE).body(err).build();
         } catch (FileSystemException e) {
-            return request.createResponseBuilder(HttpStatus.BAD_REQUEST).body("Could not generate Calendar attachment").build();
+            String err = "Could not generate ics file as calendar to mail";
+            return request.createResponseBuilder(HttpStatus.BAD_REQUEST).body(err).build();
         } catch (JsonProcessingException e) {
-            return request.createResponseBuilder(HttpStatus.BAD_REQUEST).body("Could not process input").build();
+            String err = "Could not process JSON input payload";
+            context.getLogger().warning(err);
+            return request.createResponseBuilder(HttpStatus.BAD_REQUEST).body(err).build();
         }
     }
 }

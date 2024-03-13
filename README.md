@@ -26,6 +26,12 @@ Needs .env file with API key
 
 - [x] Mail with correct domain
 - [ ] Proper handling of .env
+- [ ] Add logging in classes other than Function.java
+- [ ] Add function testing, e.g. for malformed JSON and mandatory/optional attributes
 - [ ] Add sender information
+- [ ] Split e-mail creation and actual sending for better testing
+- [ ] Improve mail attachment file name
+- [ ] Add title or sender
 - [ ] Allow multiple recipients
 - [ ] Multi-language support
+- [ ] Write proper README

@@ -28,7 +28,7 @@ public class MailerTest {
         Calendar calendarItem = eventGenerator.generateCalendarEvent(appointment);
 
         Mailer mailer = new Mailer();
-        String messageId = mailer.sendEmail(appointment, calendarItem);
+        String messageId = mailer.sendEmail(appointment, calendarItem, "en");
 
         assertNotNull(messageId);
         assertNotEquals("", messageId, "Message ID must be a defined ID");

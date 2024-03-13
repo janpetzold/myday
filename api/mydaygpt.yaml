@@ -18,6 +18,10 @@ components:
     AppointmentRequest:
       type: object
       properties:
+        language:
+          type: string
+          format: date-time
+          description: The input language of the conversation so we can apply localization for the outgoing e-mail
         startTime:
           type: string
           format: date-time
@@ -26,6 +30,9 @@ components:
           type: string
           format: date-time
           description: The end time of the appointment as ISO8601 String including milliseconds in UTC time zone.
+        title:
+          type: string
+          description: Some kind of title and/or occasion for the appointment as reference
         location:
           type: string
           description: The location of the appointment as free text, may include city name, street, zip code, etc.

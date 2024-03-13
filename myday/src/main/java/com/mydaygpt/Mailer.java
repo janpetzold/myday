@@ -32,18 +32,19 @@ public class Mailer {
         return tempFile;
     }
 
-    public String sendEmail(Appointment appointment, Calendar calendarItem) throws MailerSendException, FileSystemException {
+    // TODO: Split e-mail creation and actual sending for better testing 
+    public String sendEmail(Appointment appointment, Calendar calendarItem, String language) throws MailerSendException, FileSystemException {
         Email email = new Email();
 
         if(appointment.getSender() == null || appointment.getSender().length() == 0) {
             appointment.setSender("myday");
+            email.setSubject("Myday: New invite");
+        } else {
+            email.setSubject("Myday: New invite from " + appointment.getSender());
         }
 
         email.setFrom(appointment.getSender(), "noreply@mydaygpt.com");
         email.addRecipient(appointment.getMail(), appointment.getMail());
-        
-        email.setSubject("New appointment via myday");
-
         email.setPlain("Hello from mydayGPT, there's a new appointment for you, see invite attached.\r\n\r\nLocation: " + appointment.getLocation() + "\r\n\r\nStart time: " + appointment.getStartTime() + "\r\n\r\nEnd time: " + appointment.getEndTime());
 
         File icsFile;

@@ -23,7 +23,13 @@ public class EventGenerator {
         endDateTime = new DateTime(sdf.parse(appointment.getEndTime()));
         endDateTime.setUtc(true);
 
-        VEvent event = new VEvent(startDateTime, endDateTime, appointment.getLocation());
+        // Location is mandatory, therefore take it as default for title
+        String title = appointment.getLocation();
+        if(appointment.getTitle() != null && appointment.getTitle().length() > 0) {
+            title = appointment.getTitle();
+        }
+        
+        VEvent event = new VEvent(startDateTime, endDateTime, title);
 
         // Add UUID
         event.getProperties().add(new RandomUidGenerator().generateUid());
@@ -33,7 +39,7 @@ public class EventGenerator {
 
         // Create a calendar
         Calendar icsCalendar = new Calendar();
-        icsCalendar.getProperties().add(new ProdId("-//irlGPT//irlGPT 1.0//EN"));
+        icsCalendar.getProperties().add(new ProdId("-//mydayGPT//mydayGPT 1.0//EN"));
         icsCalendar.getProperties().add(Version.VERSION_2_0);
         icsCalendar.getProperties().add(CalScale.GREGORIAN);
         

@@ -34,7 +34,7 @@ public class EventGeneratorTest {
 
         // Verify the calendar properties
         assertNotNull(result);
-        assertEquals("-//irlGPT//irlGPT 1.0//EN", result.getProperty(ProdId.PRODID).getValue());
+        assertEquals("-//mydayGPT//mydayGPT 1.0//EN", result.getProperty(ProdId.PRODID).getValue());
         assertEquals(Version.VERSION_2_0, result.getProperty(Version.VERSION));
         assertEquals(1, result.getComponents().size());
 
