@@ -1,5 +1,3 @@
-# myday
-
 <p align="center">
   <img src="/myday/myday-logo-small.png" alt="mydayGPT logo">
   <br />
@@ -12,9 +10,9 @@ The chatbot will automatically ask you for start/end time, location and subject 
 
 To see it in action just go to
 
-https://chat.openai.com/g/g-H30age5WJ-myday
+[https://chat.openai.com/g/g-H30age5WJ-myday](https://chat.openai.com/g/g-H30age5WJ-myday)
 
-or search for "myday" in the [GPT Store](https://chat.openai.com/gpts) 
+or search for "myday" in the [GPT Store](https://chat.openai.com/gpts).
 
 ## Features
 
@@ -24,4 +22,4 @@ or search for "myday" in the [GPT Store](https://chat.openai.com/gpts)
 - verifies timezone so it will work for any region you're in
 - chat history simplifies re-creating similar appointments with same recipient over time 
 
-There are more features in the pipeline so stay tuned or just raise a request in my [Github repository](https://github.com/janpetzold/myday/issues).
+There are more features in the pipeline so stay tuned or just raise a request in the [Github repository](https://github.com/janpetzold/myday/issues).
