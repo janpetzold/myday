@@ -1,4 +1,4 @@
-1
+# mydayGPT
 
 <p align="center">
   <img src="/myday/myday-logo-small.png" alt="mydayGPT logo">
