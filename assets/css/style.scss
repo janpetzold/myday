@@ -3,8 +3,19 @@
 
 @import "{{ site.theme }}";
 @import url('https://fonts.googleapis.com/css2?family=Barlow&display=swap');
+
 .markdown-body {
   font-family: "Barlow", sans-serif;
   font-weight: 400;
   font-style: normal;
+}
+
+.markdown-body ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.markdown-body ul li:before {
+  content: "— ";
+  padding-right: 5px;
 }
