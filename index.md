@@ -1,7 +1,5 @@
-# mydayGPT
-
 <p align="center">
-  <img src="/myday/myday-logo-small.png" alt="mydayGPT logo">
+  <img src="/myday-logo-small.png" alt="mydayGPT logo">
   <br />
   <sup>Create & email appointments via prompt</sup>
 </p>
