@@ -42,6 +42,8 @@ public class EventGenerator {
         icsCalendar.getProperties().add(new ProdId("-//mydayGPT//mydayGPT 1.0//EN"));
         icsCalendar.getProperties().add(Version.VERSION_2_0);
         icsCalendar.getProperties().add(CalScale.GREGORIAN);
+
+        // TODO: Add option to set reminder
         
         // Add the event
         icsCalendar.getComponents().add(event);

@@ -28,11 +28,11 @@ Needs .env file with API key
 - [ ] Proper handling of .env
 - [ ] Add logging in classes other than Function.java
 - [ ] Add function testing, e.g. for malformed JSON and mandatory/optional attributes
-- [ ] Add sender information
+- [x] Add sender and appointment title information
+- [ ] Add support for alarms (http://ical4j.github.io/docs/ical4j/api/3.0.0/net/fortuna/ical4j/model/component/VAlarm.html)
 - [ ] Split e-mail creation and actual sending for better testing
 - [ ] Improve mail attachment file name
 - [ ] Display time in user-friendly format depending on the locale in mail body
-- [ ] Add title or sender
 - [ ] Allow multiple recipients
 - [ ] Multi-language support (correct language should be auto-determined)
 - [ ] Write proper README
