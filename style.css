@@ -1,0 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap')
+
+.quicksand-light {
+  font-family: "Quicksand", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+}
