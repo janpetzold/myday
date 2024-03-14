@@ -1,0 +1,11 @@
+theme: minima
+plugins:
+  - jekyll-feed
+
+# Custom CSS
+sass:
+  style: compressed
+
+# Include custom CSS
+include:
+  - /style.css
