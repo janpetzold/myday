@@ -18,6 +18,8 @@ Needs .env file with API key
 
     mvn azure-functions:run
 
+Note - this may take some time in case of updates of the function tools download some update. This is not indicated in the command-line.
+
 ## Deploy
 
     mvn azure-functions:deploy
@@ -28,6 +30,7 @@ Needs .env file with API key
 - [ ] Proper handling of .env
 - [ ] Add logging in classes other than Function.java
 - [ ] Add function testing, e.g. for malformed JSON and mandatory/optional attributes
+- [ ] Fix .env deploy issue
 - [x] Add sender and appointment title information
 - [ ] Add support for alarms (http://ical4j.github.io/docs/ical4j/api/3.0.0/net/fortuna/ical4j/model/component/VAlarm.html)
 - [ ] Split e-mail creation and actual sending for better testing
@@ -36,3 +39,4 @@ Needs .env file with API key
 - [ ] Allow multiple recipients
 - [ ] Multi-language support (correct language should be auto-determined)
 - [ ] Write proper README
+- [ ] Add another API for date handling like "tomorrow", "Sunday" etc.

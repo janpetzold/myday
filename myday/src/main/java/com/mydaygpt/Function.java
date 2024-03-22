@@ -2,6 +2,7 @@ package com.mydaygpt;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.mailersend.sdk.emails.Email;
 import com.mailersend.sdk.exceptions.MailerSendException;
 import com.microsoft.azure.functions.ExecutionContext;
 import com.microsoft.azure.functions.HttpMethod;
@@ -64,6 +65,11 @@ public class Function {
             context.getLogger().info("Language: " + appointment.startTime);
             context.getLogger().info("Start Time: " + appointment.startTime);
             context.getLogger().info("End Time: " + appointment.endTime);
+
+            if(appointment.reminderTime != null) {
+                context.getLogger().info("Reminder Time: " + appointment.reminderTime);
+            }
+
             context.getLogger().info("Title: " + appointment.title);
             context.getLogger().info("Location: " + appointment.location);
             // context.getLogger().info("Sender: " + appointment.sender);
@@ -74,11 +80,12 @@ public class Function {
             Calendar calendarItem = eventGenerator.generateCalendarEvent(appointment);
 
             context.getLogger().info("Sending mail with attachment");
+            
             Mailer mailer = new Mailer();
-            mailer.sendEmail(appointment, calendarItem, language);
+            Email email = mailer.compileEmail(appointment, calendarItem, language);
+            mailer.sendEmail(email);
             
             return request.createResponseBuilder(HttpStatus.OK).body("Appointment created successfully.").build();
-
         } catch (ParseException e) {
             String err = "Error parsing start and/or end time";
             context.getLogger().warning(err);

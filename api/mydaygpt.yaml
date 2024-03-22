@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: Appointment Creation API
-  version: 1.0.0
+  version: 1.0.1
   description: An API to create appointments with API key protection.
 
 servers:
@@ -30,6 +30,10 @@ components:
           type: string
           format: date-time
           description: The end time of the appointment as ISO8601 String including milliseconds in UTC time zone.
+        reminderTime:
+          type: string
+          format: date-time
+          description: The optional time for the reminder of the appointment as ISO8601 String including milliseconds in UTC time zone.
         title:
           type: string
           description: Some kind of title and/or occasion for the appointment as reference
@@ -38,7 +42,7 @@ components:
           description: The location of the appointment as free text, may include city name, street, zip code, etc.
         sender:
           type: string
-          description: The current OpenAI user who created the chat and sends the appointment
+          description: The originator of the appointment, either clear name or mail address
         mail:
           type: string
           format: email
