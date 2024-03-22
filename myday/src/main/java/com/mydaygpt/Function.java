@@ -18,6 +18,7 @@ import net.fortuna.ical4j.model.Calendar;
 
 import java.nio.file.FileSystemException;
 import java.text.ParseException;
+import java.util.Map;
 import java.util.Optional;
 
 /**
@@ -35,6 +36,12 @@ public class Function {
                 HttpRequestMessage<Optional<String>> request,
             final ExecutionContext context) {
         context.getLogger().info("Java HTTP trigger processed a request.");
+
+        context.getLogger().info("Found " + request.getHeaders().size() + " HTTP headers");
+
+        for (Map.Entry<String, String> header : request.getHeaders().entrySet()) {
+            context.getLogger().info(header.getKey() + ": " + header.getValue());
+        }
 
         String validApiKey = dotenv.get("API_KEY");
         if (validApiKey == null) {

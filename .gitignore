@@ -1,3 +1,4 @@
 .vscode
+openai
 myday/src/main/resources/.env
 myday/target

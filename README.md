@@ -40,3 +40,4 @@ Note - this may take some time in case of updates of the function tools download
 - [ ] Multi-language support (correct language should be auto-determined)
 - [ ] Write proper README
 - [ ] Add another API for date handling like "tomorrow", "Sunday" etc.
+- [ ] Add host verification

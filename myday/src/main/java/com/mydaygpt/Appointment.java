@@ -1,7 +1,5 @@
 package com.mydaygpt;
 
-import java.util.Optional;
-
 public class Appointment {
     public String startTime;
     public String endTime;

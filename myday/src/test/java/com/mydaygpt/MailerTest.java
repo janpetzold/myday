@@ -6,7 +6,6 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.io.IOException;
 import java.text.ParseException;
-import java.util.Optional;
 
 import org.junit.jupiter.api.Test;
 

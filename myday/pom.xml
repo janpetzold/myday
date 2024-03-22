@@ -86,7 +86,7 @@
                     <!-- function app resource group -->
                     <resourceGroup>myday-rg</resourceGroup>
                     <!-- function app service plan name -->
-                    <appServicePlanName>java-myday-service-plan</appServicePlanName>
+                    <appServicePlanName>myday-function-service-plan</appServicePlanName>
                     <!-- function app region-->
                     <!-- refers https://github.com/microsoft/azure-maven-plugins/wiki/Azure-Functions:-Configuration-Details#supported-regions for all valid values -->
                     <region>westeurope</region>
