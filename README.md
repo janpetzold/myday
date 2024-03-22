@@ -22,7 +22,8 @@ Note - this may take some time in case of updates of the function tools download
 
 ## Deploy
 
-    mvn azure-functions:deploy
+    mvn clean package -P production -DskipTests=true 
+    mvn azure-functions:deploy -P production
 
 ## Missing features/known issues
 
@@ -30,7 +31,7 @@ Note - this may take some time in case of updates of the function tools download
 - [ ] Proper handling of .env
 - [ ] Add logging in classes other than Function.java
 - [ ] Add function testing, e.g. for malformed JSON and mandatory/optional attributes
-- [ ] Fix .env deploy issue
+- [x] Fix .env deploy issue
 - [x] Add sender and appointment title information
 - [ ] Add support for alarms (http://ical4j.github.io/docs/ical4j/api/3.0.0/net/fortuna/ical4j/model/component/VAlarm.html)
 - [ ] Split e-mail creation and actual sending for better testing
