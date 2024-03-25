@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: Appointment Creation API
-  version: 1.0.1
+  version: 1.0.2
   description: An API to create appointments with API key protection.
 
 servers:
@@ -15,6 +15,13 @@ components:
       in: header
       name: X-Api-Key
   schemas:
+    DateTimeResponse:
+      type: object
+      properties:
+        currentDateTime:
+          type: string
+          format: date-time
+          description: The current date and time in ISO 8601 format in UTC timezone.
     AppointmentRequest:
       type: object
       properties:
@@ -54,7 +61,24 @@ components:
         - mail
 
 paths:
-  /appointments:
+  /myday:
+    get:
+      summary: Get the current date and time
+      operationId: getCurrentDateTime
+      description: Get the current date and time in ISO8601 format for UTC time zone
+      security:
+        - ApiKeyAuth: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DateTimeResponse'
+        '401':
+          description: Unauthorized, invalid or missing API key.
+        '500':
+          description: Internal server error.
     post:
       summary: Create an appointment
       operationId: createAppointment

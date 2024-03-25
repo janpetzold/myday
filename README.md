@@ -42,3 +42,4 @@ Note - this may take some time in case of updates of the function tools download
 - [ ] Write proper README
 - [ ] Add another API for date handling like "tomorrow", "Sunday" etc.
 - [ ] Add host verification
+- [ ] Create cost saving alert on Azure

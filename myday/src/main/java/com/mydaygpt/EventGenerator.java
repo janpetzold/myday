@@ -1,28 +1,34 @@
 package com.mydaygpt;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 
 import net.fortuna.ical4j.model.*;
 import net.fortuna.ical4j.model.component.VAlarm;
 import net.fortuna.ical4j.model.component.VEvent;
+import net.fortuna.ical4j.model.component.VTimeZone;
 import net.fortuna.ical4j.model.property.*;
 import net.fortuna.ical4j.util.RandomUidGenerator;
 
 public class EventGenerator {
-    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
+    // Formatter shall be gentle with regards to milliseconds so these are optional
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss[.SSS]'Z'");
 
-    public final Calendar generateCalendarEvent(Appointment appointment) throws ParseException{
-        sdf.setTimeZone(TimeZone.getTimeZone("UTC")); // Ensure UTC
-
+    public final Calendar generateCalendarEvent(Appointment appointment) {
         DateTime startDateTime;
         DateTime endDateTime;
-        
-        startDateTime = new DateTime(sdf.parse(appointment.getStartTime()));
-        startDateTime.setUtc(true);
+        DateTime reminderDateTime;
 
-        endDateTime = new DateTime(sdf.parse(appointment.getEndTime()));
-        endDateTime.setUtc(true);
+        TimeZoneRegistry registry = TimeZoneRegistryFactory.getInstance().createRegistry();
+        TimeZone timezone = registry.getTimeZone("Etc/UTC");
+        VTimeZone tz = timezone.getVTimeZone();
+
+        ZonedDateTime startDate = ZonedDateTime.parse(appointment.getStartTime(), formatter.withZone(ZoneId.of("UTC")));
+        startDateTime = new DateTime(Date.from(startDate.toInstant()), new TimeZone(tz));
+
+        ZonedDateTime endDate = ZonedDateTime.parse(appointment.getEndTime(), formatter.withZone(ZoneId.of("UTC")));
+        endDateTime = new DateTime(Date.from(endDate.toInstant()), new TimeZone(tz));
 
         // Location is mandatory, therefore take it as default for title
         String title = appointment.getLocation();
@@ -46,8 +52,8 @@ public class EventGenerator {
 
         // Add reminder if present
         if(appointment.getReminderTime() != null && appointment.getReminderTime().length() > 0) {
-            DateTime reminderDateTime = new DateTime(sdf.parse(appointment.getReminderTime()));
-            reminderDateTime.setUtc(true);
+            ZonedDateTime reminderDate = ZonedDateTime.parse(appointment.getReminderTime(), formatter.withZone(ZoneId.of("UTC")));
+            reminderDateTime = new DateTime(Date.from(reminderDate.toInstant()), new TimeZone(tz));
 
             VAlarm reminder = new VAlarm(reminderDateTime);
             reminder.getProperties().add(Action.DISPLAY);
