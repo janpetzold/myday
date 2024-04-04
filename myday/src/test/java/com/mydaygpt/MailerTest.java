@@ -20,6 +20,7 @@ public class MailerTest {
         Appointment appointment = new Appointment();
         appointment.setStartTime("2025-01-03T12:00:00.000Z");
         appointment.setEndTime("2025-01-03T14:00:00.000Z");
+        appointment.setTimeZone("Etc/UTC");
         appointment.setLocation("Mortifami");
 
         // Could be checked via https://temp-mail.org/
@@ -53,6 +54,7 @@ public class MailerTest {
         appointment.setStartTime("2025-01-03T12:00:00.000Z");
         appointment.setEndTime("2025-01-03T14:00:00.000Z");
         appointment.setLocation("Mortifami");
+        appointment.setTimeZone("Etc/UTC");
         appointment.setSender("Yannick");
 
         // Could be checked via https://temp-mail.org/

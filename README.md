@@ -28,18 +28,25 @@ Note - this may take some time in case of updates of the function tools download
 ## Missing features/known issues
 
 - [x] Mail with correct domain
-- [ ] Proper handling of .env
+- [x] Proper handling of .env
 - [ ] Add logging in classes other than Function.java
 - [ ] Add function testing, e.g. for malformed JSON and mandatory/optional attributes
+- [x] Change timezone handling to client-side instead of UTC by default
+- [ ] Use proper URL for Azure function, migrate web presence
 - [x] Fix .env deploy issue
 - [x] Add sender and appointment title information
-- [ ] Add support for alarms (http://ical4j.github.io/docs/ical4j/api/3.0.0/net/fortuna/ical4j/model/component/VAlarm.html)
-- [ ] Split e-mail creation and actual sending for better testing
+- [x] Add support for alarms (http://ical4j.github.io/docs/ical4j/api/3.0.0/net/fortuna/ical4j/model/component/VAlarm.html)
+- [x] Split e-mail creation and actual sending for better testing
 - [ ] Improve mail attachment file name
 - [ ] Display time in user-friendly format depending on the locale in mail body
 - [ ] Allow multiple recipients
 - [ ] Multi-language support (correct language should be auto-determined)
 - [ ] Write proper README
-- [ ] Add another API for date handling like "tomorrow", "Sunday" etc.
+- [x] Add another API for date handling like "tomorrow", "Sunday" etc.
+- [ ] Add another API to detect current timezone including its name
 - [ ] Add host verification
+- [ ] Logging
 - [ ] Create cost saving alert on Azure
+- [ ] Fix timing tests
+- [ ] Fix reminder that always is converted to UTC while other times are not
+- [ ] Add Live Metrics logging: https://learn.microsoft.com/en-us/azure/azure-monitor/app/live-stream?tabs=dotnet6

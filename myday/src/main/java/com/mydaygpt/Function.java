@@ -87,6 +87,7 @@ public class Function {
                 context.getLogger().info("Received appointment details: ");
                 context.getLogger().info("Start Time: " + appointment.startTime);
                 context.getLogger().info("End Time: " + appointment.endTime);
+                context.getLogger().info("Timezone: " + appointment.timeZone);
 
                 if(appointment.reminderTime != null) {
                     context.getLogger().info("Reminder Time: " + appointment.reminderTime);

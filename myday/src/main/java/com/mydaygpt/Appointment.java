@@ -4,6 +4,7 @@ public class Appointment {
     public String startTime;
     public String endTime;
     public String reminderTime;
+    public String timeZone;
     public String title;
     public String location;
     public String sender;
@@ -12,11 +13,12 @@ public class Appointment {
     public Appointment() {
     }
 
-    public Appointment(String startTime, String endTime, String reminderTime, String title, String location,
+    public Appointment(String startTime, String endTime, String reminderTime, String timeZone, String title, String location,
             String sender, String mail) {
         this.startTime = startTime;
         this.endTime = endTime;
         this.reminderTime = reminderTime;
+        this.timeZone = timeZone;
         this.title = title;
         this.location = location;
         this.sender = sender;
@@ -45,6 +47,14 @@ public class Appointment {
 
     public void setReminderTime(String reminderTime) {
         this.reminderTime = reminderTime;
+    }
+
+    public String getTimeZone() {
+        return timeZone;
+    }
+
+    public void setTimeZone(String timeZone) {
+        this.timeZone = timeZone;
     }
 
     public String getTitle() {

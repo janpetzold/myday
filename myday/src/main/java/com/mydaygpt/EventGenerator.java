@@ -1,8 +1,6 @@
 package com.mydaygpt;
 
-import java.time.ZoneId;
 import java.time.ZonedDateTime;
-import java.time.format.DateTimeFormatter;
 
 import net.fortuna.ical4j.model.*;
 import net.fortuna.ical4j.model.component.VAlarm;
@@ -12,22 +10,21 @@ import net.fortuna.ical4j.model.property.*;
 import net.fortuna.ical4j.util.RandomUidGenerator;
 
 public class EventGenerator {
-    // Formatter shall be gentle with regards to milliseconds so these are optional
-    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss[.SSS]'Z'");
-
     public final Calendar generateCalendarEvent(Appointment appointment) {
         DateTime startDateTime;
         DateTime endDateTime;
         DateTime reminderDateTime;
 
         TimeZoneRegistry registry = TimeZoneRegistryFactory.getInstance().createRegistry();
-        TimeZone timezone = registry.getTimeZone("Etc/UTC");
+        TimeZone timezone = registry.getTimeZone(appointment.getTimeZone());
         VTimeZone tz = timezone.getVTimeZone();
 
-        ZonedDateTime startDate = ZonedDateTime.parse(appointment.getStartTime(), formatter.withZone(ZoneId.of("UTC")));
+        System.out.println("EventGenerator set to timezone " + tz.getTimeZoneId().getValue());
+
+        ZonedDateTime startDate = TimeParser.getEventDate(appointment.getStartTime(), appointment.getTimeZone());
         startDateTime = new DateTime(Date.from(startDate.toInstant()), new TimeZone(tz));
 
-        ZonedDateTime endDate = ZonedDateTime.parse(appointment.getEndTime(), formatter.withZone(ZoneId.of("UTC")));
+        ZonedDateTime endDate = TimeParser.getEventDate(appointment.getEndTime(), appointment.getTimeZone());
         endDateTime = new DateTime(Date.from(endDate.toInstant()), new TimeZone(tz));
 
         // Location is mandatory, therefore take it as default for title
@@ -52,7 +49,7 @@ public class EventGenerator {
 
         // Add reminder if present
         if(appointment.getReminderTime() != null && appointment.getReminderTime().length() > 0) {
-            ZonedDateTime reminderDate = ZonedDateTime.parse(appointment.getReminderTime(), formatter.withZone(ZoneId.of("UTC")));
+            ZonedDateTime reminderDate = TimeParser.getEventDate(appointment.getReminderTime(), appointment.getTimeZone());
             reminderDateTime = new DateTime(Date.from(reminderDate.toInstant()), new TimeZone(tz));
 
             VAlarm reminder = new VAlarm(reminderDateTime);

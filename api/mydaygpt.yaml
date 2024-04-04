@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: Appointment Creation API
-  version: 1.0.2
+  version: 1.0.4
   description: An API to create appointments with API key protection.
 
 servers:
@@ -32,15 +32,18 @@ components:
         startTime:
           type: string
           format: date-time
-          description: The start time of the appointment as ISO8601 String including milliseconds in UTC time zone.
+          description: The start time of the appointment as ISO8601 String in the users current or selected time zone.
         endTime:
           type: string
           format: date-time
-          description: The end time of the appointment as ISO8601 String including milliseconds in UTC time zone.
+          description: The end time of the appointment as ISO8601 String in the users current or selected time zone.
         reminderTime:
           type: string
           format: date-time
-          description: The optional time for the reminder of the appointment as ISO8601 String including milliseconds in UTC time zone.
+          description: The optional time for the reminder of the appointment as ISO8601 String in the users current or selected time zone.
+        timeZone:
+          type: string
+          description: The timezone of the appointment as IANA time zone identifier, e.g. "Europe/Bucharest" for GMT+03:00
         title:
           type: string
           description: Some kind of title and/or occasion for the appointment as reference
@@ -57,6 +60,7 @@ components:
       required:
         - startTime
         - endTime
+        - timeZone
         - location
         - mail
 
@@ -65,7 +69,7 @@ paths:
     get:
       summary: Get the current date and time
       operationId: getCurrentDateTime
-      description: Get the current date and time in ISO8601 format for UTC time zone
+      description: Get the current date and time in ISO8601 format
       security:
         - ApiKeyAuth: []
       responses:
