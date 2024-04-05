@@ -1,0 +1,16 @@
+<policies>
+    <inbound>
+        <set-backend-service base-url="https://janpetzold.github.io/myday/" />
+        <rewrite-uri template="/" copy-unmatched-params="false" />
+        <base />
+    </inbound>
+    <backend>
+        <base />
+    </backend>
+    <outbound>
+        <base />
+    </outbound>
+    <on-error>
+        <base />
+    </on-error>
+</policies>

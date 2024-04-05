@@ -1,13 +1,11 @@
 openapi: 3.0.0
 info:
   title: Appointment Creation API
-  version: 1.0.4
-  description: An API to create appointments with API key protection.
-
+  version: 1.0.5
+  description: An API to create appointments based on assistant input
 servers:
-  - url: 'https://myday.azurewebsites.net/api'
+  - url: https://mydaygpt.com/api
     description: Base server
-
 components:
   securitySchemes:
     ApiKeyAuth:
@@ -25,10 +23,6 @@ components:
     AppointmentRequest:
       type: object
       properties:
-        #language:
-        #  type: string
-        #  format: date-time
-        #  description: The input language of the conversation so we can apply localization for the outgoing e-mail
         startTime:
           type: string
           format: date-time
@@ -40,7 +34,8 @@ components:
         reminderTime:
           type: string
           format: date-time
-          description: The optional time for the reminder of the appointment as ISO8601 String in the users current or selected time zone.
+          description: The optional time for the reminder of the appointment as ISO8601 String in the users current or selected
+            time zone.
         timeZone:
           type: string
           description: The timezone of the appointment as IANA time zone identifier, e.g. "Europe/Bucharest" for GMT+03:00
@@ -63,7 +58,6 @@ components:
         - timeZone
         - location
         - mail
-
 paths:
   /myday:
     get:
@@ -73,15 +67,15 @@ paths:
       security:
         - ApiKeyAuth: []
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/DateTimeResponse'
-        '401':
+                $ref: "#/components/schemas/DateTimeResponse"
+        "401":
           description: Unauthorized, invalid or missing API key.
-        '500':
+        "500":
           description: Internal server error.
     post:
       summary: Create an appointment
@@ -94,9 +88,9 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/AppointmentRequest'
+              $ref: "#/components/schemas/AppointmentRequest"
       responses:
-        '200':
+        "200":
           description: Appointment created successfully.
           content:
             application/json:
@@ -105,9 +99,9 @@ paths:
                 properties:
                   message:
                     type: string
-        '400':
+        "400":
           description: Invalid input provided.
-        '401':
+        "401":
           description: Unauthorized, invalid or missing API key.
-        '500':
+        "500":
           description: Internal server error.
