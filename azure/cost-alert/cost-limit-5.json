@@ -1,0 +1,29 @@
+{
+    "properties": {
+        "category": "Cost",
+        "amount": 5,
+        "timeGrain": "Monthly",
+        "timePeriod": {
+            "startDate": "2024-04-01T00:00:00Z",
+            "endDate": "2030-12-31T00:00:00Z"
+        },
+        "filter": {
+                    "resourceGroups": [
+                        "myday-rg"
+                    ]
+        },
+        "notifications": {
+            "Actual_GreaterThan_80_Percent": {
+                "enabled": true,
+                "operator": "GreaterThan",
+                "threshold": 80,
+                "locale": "de-de",
+                "contactEmails": [
+                    "MAIL-RECIPIENT-1",
+                    "MAIL-RECIPIENT-2"
+                ],
+                "thresholdType": "Actual"
+            }
+        }
+    }
+}

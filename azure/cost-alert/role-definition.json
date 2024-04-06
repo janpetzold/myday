@@ -1,0 +1,14 @@
+{
+    "Name": "Custom Budget Manager",
+    "IsCustom": true,
+    "Description": "Role that allows managing budgets in Azure.",
+    "Actions": [
+      "Microsoft.Consumption/budgets/read",
+      "Microsoft.Consumption/budgets/write",
+      "Microsoft.Consumption/budgets/delete"
+    ],
+    "NotActions": [],
+    "DataActions": [],
+    "NotDataActions": [],
+    "AssignableScopes": ["/subscriptions/SUBSCRIPTION-ID"]
+}  
