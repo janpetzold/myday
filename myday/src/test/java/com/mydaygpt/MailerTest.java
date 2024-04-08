@@ -45,7 +45,7 @@ public class MailerTest {
 
         appointment.setTitle("Test drive");
         Email emailWithTitle = mailer.compileEmail(appointment, calendarItem, "en");
-        assertEquals("Myday: New invite \"Test drive\"", emailWithTitle.subject);
+        assertEquals("Myday 📅: New invite \"Test drive\"", emailWithTitle.subject);
     }
 
     @Test
@@ -58,7 +58,7 @@ public class MailerTest {
         appointment.setSender("Yannick");
 
         // Could be checked via https://temp-mail.org/
-        appointment.setMail("fokawep747@hdrlog.com");
+        appointment.setMail("bacatic836@evimzo.com");
 
         EventGenerator eventGenerator = new EventGenerator();
         Calendar calendarItem = eventGenerator.generateCalendarEvent(appointment);
