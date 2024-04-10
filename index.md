@@ -31,13 +31,14 @@ Privacy Policy for mydayGPT
 
 Effective Date: 10th of April 2024
 
-MydayGPT ("we", "us", or "our") offers a service for generating ICS calendar entries ("Service"). We are committed to protecting your privacy and managing your personal information transparently. This Privacy Policy explains our practices regarding the collection, use, protection, and disclosure of your information through the Service.
-Information We Collect
+MydayGPT ("we", "us", or "our") offers a service for generating ICS calendar entries ("Service"). We are committed to protecting your privacy and handling your data with transparency and care. This Privacy Policy explains our practices regarding the collection, use, protection, and disclosure of your information through the Service.
+
+### Information We Collect
 
 To facilitate our Service, we collect the following types of information:
 
-Contact Information: We collect your email address to send you the generated calendar entries.
-Appointment Details: We require details such as the appointment location and times to accurately create your calendar entries.
+- Contact Information: We collect your email address to send you the generated calendar entries.
+- Appointment Details: We require details such as the appointment location and times to accurately create your calendar entries.
 
 This information is essential for the provision of our Service.
 
@@ -45,9 +46,9 @@ This information is essential for the provision of our Service.
 
 Your information is used in the following ways:
 
-To provide and maintain our Service;
-To manage your requests: Specifically, to generate and send calendar entries;
-To comply with legal obligations.
+- To provide and maintain our Service;
+- To manage your requests: Specifically, to generate and send calendar entries;
+- To comply with legal obligations.
 
 ### Sharing Your Information
 
@@ -55,7 +56,7 @@ We share your information with Mailersend, our email service provider, to fulfil
 
 ### International Transfers
 
-Your information, including Personal Data, may be transferred to — and maintained on — computers located outside of your state, province, country, or other governmental jurisdiction where the data protection laws may differ from those of your jurisdiction.
+Your information, including Personal Data, may be transferred to - and maintained on - computers located outside of your state, province, country, or other governmental jurisdiction where the data protection laws may differ from those of your jurisdiction.
 
 ### Data Protection, Retention and Deletion
 
@@ -72,4 +73,4 @@ We implement reasonable security measures designed to protect your personal info
 We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the "Effective Date" at the top of this Privacy Policy.
 Contact Us
 
-For any questions or concerns regarding this Privacy Policy or our practices, please contact us at hello@mydaygpt.com
+For any questions or concerns regarding this Privacy Policy or our practices, please contact us at hello@mydaygpt.com.
